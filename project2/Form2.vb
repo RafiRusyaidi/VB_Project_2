@@ -1,24 +1,17 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmRegister
-    Dim Conn As MySqlConnection
-    Dim sqlCmd As MySqlCommand
-
-    Function MySqlConn() As MySqlConnection
-        Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
-        Conn = New MySqlConnection(ConnString)
-        Return Conn
-
-    End Function
-
+    Dim sql As String
     Sub FillDataGridView()
-        Conn = MySqlConn()
+        Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
+        Dim Conn As New MySqlConnection(ConnString)
+        sql = "SELECT * FROM staff_detail"
         Dim dataTable As New DataTable()
-        Dim adapter As New MySqlDataAdapter("SELECT * FROM staff_detail", Conn)
+        Dim adapter As New MySqlDataAdapter(sql, Conn)
         Try
 
             Conn.Open()
-            adapter.Fill(dataTable)
             DataGridView1.AutoGenerateColumns = False
+            adapter.Fill(dataTable)
             DataGridView1.DataSource = dataTable
 
             DataGridView1.Columns("id").DataPropertyName = "id"
@@ -30,10 +23,11 @@ Public Class frmRegister
             DataGridView1.Columns("username").DataPropertyName = "username"
             DataGridView1.Columns("password").DataPropertyName = "password"
 
-        Catch ex As MySqlException
-            MessageBox.Show($"Error: {ex.Message}")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
         Finally
             Conn.Close()
+            Conn.Dispose()
         End Try
     End Sub
     Private Sub frmRegister_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -41,7 +35,8 @@ Public Class frmRegister
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
+        Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
+        Dim Conn As New MySqlConnection(ConnString)
         Try
             Conn.Open()
             Dim passId As String = DataGridView1.CurrentRow.Cells("id").Value.ToString
@@ -61,12 +56,12 @@ Public Class frmRegister
                 Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this data?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
                 If result = DialogResult.Yes Then
-                    Dim sql As String = "DELETE FROM staff_detail WHERE id = @passId"
+                    sql = "DELETE FROM staff_detail WHERE id = @passId"
 
-                    Dim cmd As New MySqlCommand(sql, Conn)
-                    cmd.Parameters.AddWithValue("@passId", passId)
+                    Dim sqlCmd As New MySqlCommand(sql, Conn)
+                    sqlCmd.Parameters.AddWithValue("@passId", passId)
 
-                    cmd.ExecuteNonQuery()
+                    sqlCmd.ExecuteNonQuery()
                     MessageBox.Show("Data deleted successfully.", "Delete Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Else
                     MessageBox.Show("Data deletion canceled.", "Delete Canceled", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -77,11 +72,13 @@ Public Class frmRegister
             MsgBox(ex.Message)
         Finally
             Conn.Close()
+            Conn.Dispose()
         End Try
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-
+        Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
+        Dim Conn As New MySqlConnection(ConnString)
         Try
             Conn.Open()
             Dim addName As String = txtName.Text
@@ -98,10 +95,9 @@ Public Class frmRegister
                 addGender = "F"
             End If
 
-            Dim sql As String = "INSERT INTO staff_detail (sname, numTel, address, gender, email, username, password) VALUES (@addName, @addNoTel, @addAddress, @addGender, @addEmail, @addUsername, @addPassword)"
-            sqlCmd = New MySqlCommand(sql, Conn)
+            sql = "INSERT INTO staff_detail (sname, numTel, address, gender, email, username, password) VALUES (@addName, @addNoTel, @addAddress, @addGender, @addEmail, @addUsername, @addPassword)"
+            Dim sqlCmd As New MySqlCommand(sql, Conn)
 
-            ' Add parameters to the command
             sqlCmd.Parameters.AddWithValue("@addName", addName)
             sqlCmd.Parameters.AddWithValue("@addNoTel", addNoTel)
             sqlCmd.Parameters.AddWithValue("@addAddress", addAddress)
@@ -110,20 +106,30 @@ Public Class frmRegister
             sqlCmd.Parameters.AddWithValue("@addUsername", addUsername)
             sqlCmd.Parameters.AddWithValue("@addPassword", addPassword)
 
-            ' Execute the INSERT command
-
             sqlCmd.ExecuteNonQuery()
 
             MsgBox("Data inserted successfully.")
             FillDataGridView()
         Catch ex As Exception
-            MsgBox($"Error executing SQL command: {ex.Message}{Environment.NewLine}{ex.StackTrace}")
+            MsgBox(ex.Message)
         Finally
             Conn.Close()
+            Conn.Dispose()
         End Try
     End Sub
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         FillDataGridView()
+    End Sub
+
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        txtName.Clear()
+        txtNoTel.Clear()
+        txtEmail.Clear()
+        rtbAddress.Clear()
+        txtUsrname.Clear()
+        txtPassword.Clear()
+        radMale.Checked = False
+        radFemale.Checked = False
     End Sub
 End Class

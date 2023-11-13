@@ -1,15 +1,8 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmLogin
-    Dim Conn As MySqlConnection
-    Dim sqlCmd As MySqlCommand
-    Dim sqlRead As MySqlDataReader
-
-    Sub MySqlConn()
-        Dim ConnString As String = "server=localhost; user=root;port=3306;database=vb_project_2"
-        Conn = New MySqlConnection(ConnString)
-    End Sub
     Sub MysqlConnCheck()
-        MySqlConn()
+        Dim ConnString As String = "server=localhost; user=root;port=3306;database=vb_project_2"
+        Dim Conn As New MySqlConnection(ConnString)
         Try
             Conn.Open()
             MsgBox("Success")
@@ -19,15 +12,18 @@ Public Class frmLogin
         End Try
     End Sub
     Sub MysqlLogin()
-        MySqlConn()
+        Dim ConnString As String = "server=localhost; user=root;port=3306;database=vb_project_2"
+        Dim Conn As New MySqlConnection(ConnString)
         Try
             Conn.Open()
             Dim chckUsername = txtUsername.Text
             Dim chckPassword = txtPassword.Text
             Dim sql As String = "SELECT * FROM staff_detail WHERE username = @chckUsername AND password = @chckPassword"
-            sqlCmd = New MySqlCommand(sql, Conn)
+            Dim sqlCmd As New MySqlCommand(sql, Conn)
             sqlCmd.Parameters.AddWithValue("@chckUsername", chckUsername)
             sqlCmd.Parameters.AddWithValue("@chckPassword", chckPassword)
+
+            Dim sqlRead As MySqlDataReader
             sqlRead = sqlCmd.ExecuteReader()
 
             Using sqlRead
@@ -54,5 +50,10 @@ Public Class frmLogin
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         MysqlLogin()
+    End Sub
+
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        txtUsername.Clear()
+        txtPassword.Clear()
     End Sub
 End Class
