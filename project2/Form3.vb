@@ -1,13 +1,10 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class frmEdit
+    Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
+    Dim sql As String
     Dim getId As String
-    Sub MySqlConn()
-        Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
-        Dim Conn As New MySqlConnection(ConnString)
-    End Sub
-    Sub New(val1 As String, val2 As String, val3 As String, val4 As String, val5 As String, val6 As String, val7 As String, val8 As String)
-
+    Sub New(val1 As String, val2 As String, val3 As String, val4 As String, val5 As String, val6 As String)
         InitializeComponent()
         getId = val1
         txtName.Text = val2
@@ -21,13 +18,8 @@ Public Class frmEdit
             radFemale.Checked = True
         End If
 
-        txtUsrname.Text = val7
-        txtPassword.Text = val8
-
     End Sub
-
     Private Sub btnConfirm_Click(sender As Object, e As EventArgs) Handles btnConfirm.Click
-        Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
         Dim Conn As New MySqlConnection(ConnString)
         Dim resultReply As DialogResult = MessageBox.Show("Are you sure want to edit the data?", "Edit Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
@@ -37,8 +29,6 @@ Public Class frmEdit
         Dim updEmail As String = txtEmail.Text
         Dim updAddress As String = txtAddress.Text
         Dim updGender As String
-        Dim updUsrname As String = txtUsrname.Text
-        Dim updPassword As String = txtPassword.Text
         If radMale.Checked Then
             updGender = "M"
         Else
@@ -48,15 +38,13 @@ Public Class frmEdit
         Try
             If resultReply = DialogResult.Yes Then
                 Conn.Open()
-                Dim sql As String = "UPDATE staff_detail SET sname = @updName, numTel = @updNumTel, address = @updAddress, gender = @updGender, email = @updEmail, username = @updUsrname, password = @updPassword WHERE id = @id"
+                sql = "UPDATE staff_table SET sname = @updName, numTel = @updNumTel, address = @updAddress, gender = @updGender, email = @updEmail WHERE id = @id"
                 Dim sqlCmd As New MySqlCommand(sql, Conn)
                 sqlCmd.Parameters.AddWithValue("@updName", updName)
                 sqlCmd.Parameters.AddWithValue("@updNumTel", updNumTel)
                 sqlCmd.Parameters.AddWithValue("@updAddress", updAddress)
                 sqlCmd.Parameters.AddWithValue("@updEmail", updEmail)
                 sqlCmd.Parameters.AddWithValue("@updGender", updGender)
-                sqlCmd.Parameters.AddWithValue("@updUsrname", updUsrname)
-                sqlCmd.Parameters.AddWithValue("@updPassword", updPassword)
                 sqlCmd.Parameters.AddWithValue("@id", id)
 
                 sqlCmd.ExecuteNonQuery()

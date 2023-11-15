@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmLogin
+    Dim ConnString As String = "server=localhost; user=root;port=3306;database=vb_project_2"
     Sub MysqlConnCheck()
-        Dim ConnString As String = "server=localhost; user=root;port=3306;database=vb_project_2"
         Dim Conn As New MySqlConnection(ConnString)
         Try
             Conn.Open()
@@ -10,20 +10,17 @@ Public Class frmLogin
             MessageBox.Show(ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
     Sub ClearInput()
         txtUsername.Clear()
         txtPassword.Clear()
     End Sub
-
     Sub MysqlLogin()
-        Dim ConnString As String = "server=localhost; user=root;port=3306;database=vb_project_2"
         Dim Conn As New MySqlConnection(ConnString)
         Try
             Conn.Open()
             Dim chckUsername = txtUsername.Text
             Dim chckPassword = txtPassword.Text
-            Dim sql As String = "SELECT * FROM staff_detail WHERE username = @chckUsername AND password = @chckPassword"
+            Dim sql As String = "SELECT * FROM admin_table WHERE dept_username = @chckUsername AND dept_password = @chckPassword"
             Dim sqlCmd As New MySqlCommand(sql, Conn)
             sqlCmd.Parameters.AddWithValue("@chckUsername", chckUsername)
             sqlCmd.Parameters.AddWithValue("@chckPassword", chckPassword)

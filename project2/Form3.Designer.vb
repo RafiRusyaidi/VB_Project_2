@@ -24,13 +24,9 @@ Partial Class frmEdit
     Private Sub InitializeComponent()
         radFemale = New RadioButton()
         radMale = New RadioButton()
-        txtPassword = New TextBox()
-        txtUsrname = New TextBox()
         txtEmail = New TextBox()
         txtNoTel = New TextBox()
         txtName = New TextBox()
-        lblPass = New Label()
-        lblusrname = New Label()
         lblEmail = New Label()
         lblGender = New Label()
         lblAddress = New Label()
@@ -45,11 +41,11 @@ Partial Class frmEdit
         ' radFemale
         ' 
         radFemale.AutoSize = True
-        radFemale.Location = New Point(381, 124)
+        radFemale.Location = New Point(357, 92)
         radFemale.Margin = New Padding(2)
         radFemale.Name = "radFemale"
         radFemale.Size = New Size(78, 24)
-        radFemale.TabIndex = 24
+        radFemale.TabIndex = 21
         radFemale.TabStop = True
         radFemale.Text = "Female"
         radFemale.UseVisualStyleBackColor = True
@@ -57,81 +53,45 @@ Partial Class frmEdit
         ' radMale
         ' 
         radMale.AutoSize = True
-        radMale.Location = New Point(316, 124)
+        radMale.Location = New Point(292, 92)
         radMale.Margin = New Padding(2)
         radMale.Name = "radMale"
         radMale.Size = New Size(63, 24)
-        radMale.TabIndex = 23
+        radMale.TabIndex = 20
         radMale.TabStop = True
         radMale.Text = "Male"
         radMale.UseVisualStyleBackColor = True
         ' 
-        ' txtPassword
-        ' 
-        txtPassword.Location = New Point(316, 262)
-        txtPassword.Margin = New Padding(2)
-        txtPassword.Name = "txtPassword"
-        txtPassword.Size = New Size(121, 27)
-        txtPassword.TabIndex = 26
-        ' 
-        ' txtUsrname
-        ' 
-        txtUsrname.Location = New Point(316, 194)
-        txtUsrname.Margin = New Padding(2)
-        txtUsrname.Name = "txtUsrname"
-        txtUsrname.Size = New Size(121, 27)
-        txtUsrname.TabIndex = 25
-        ' 
         ' txtEmail
         ' 
         txtEmail.CharacterCasing = CharacterCasing.Lower
-        txtEmail.Location = New Point(44, 266)
+        txtEmail.Location = New Point(292, 158)
         txtEmail.Margin = New Padding(2)
         txtEmail.Name = "txtEmail"
-        txtEmail.Size = New Size(226, 27)
-        txtEmail.TabIndex = 21
+        txtEmail.Size = New Size(172, 27)
+        txtEmail.TabIndex = 22
         ' 
         ' txtNoTel
         ' 
-        txtNoTel.Location = New Point(44, 190)
+        txtNoTel.Location = New Point(35, 158)
         txtNoTel.Margin = New Padding(2)
         txtNoTel.Name = "txtNoTel"
         txtNoTel.Size = New Size(226, 27)
-        txtNoTel.TabIndex = 20
+        txtNoTel.TabIndex = 18
         ' 
         ' txtName
         ' 
         txtName.CharacterCasing = CharacterCasing.Upper
-        txtName.Location = New Point(44, 121)
+        txtName.Location = New Point(35, 89)
         txtName.Margin = New Padding(2)
         txtName.Name = "txtName"
         txtName.Size = New Size(226, 27)
-        txtName.TabIndex = 19
-        ' 
-        ' lblPass
-        ' 
-        lblPass.AutoSize = True
-        lblPass.Location = New Point(316, 239)
-        lblPass.Margin = New Padding(2, 0, 2, 0)
-        lblPass.Name = "lblPass"
-        lblPass.Size = New Size(81, 20)
-        lblPass.TabIndex = 30
-        lblPass.Text = "Password : "
-        ' 
-        ' lblusrname
-        ' 
-        lblusrname.AutoSize = True
-        lblusrname.Location = New Point(316, 165)
-        lblusrname.Margin = New Padding(2, 0, 2, 0)
-        lblusrname.Name = "lblusrname"
-        lblusrname.Size = New Size(86, 20)
-        lblusrname.TabIndex = 29
-        lblusrname.Text = "Username : "
+        txtName.TabIndex = 17
         ' 
         ' lblEmail
         ' 
         lblEmail.AutoSize = True
-        lblEmail.Location = New Point(43, 243)
+        lblEmail.Location = New Point(291, 135)
         lblEmail.Margin = New Padding(2, 0, 2, 0)
         lblEmail.Name = "lblEmail"
         lblEmail.Size = New Size(57, 20)
@@ -141,7 +101,7 @@ Partial Class frmEdit
         ' lblGender
         ' 
         lblGender.AutoSize = True
-        lblGender.Location = New Point(316, 90)
+        lblGender.Location = New Point(292, 58)
         lblGender.Margin = New Padding(2, 0, 2, 0)
         lblGender.Name = "lblGender"
         lblGender.Size = New Size(78, 20)
@@ -151,7 +111,7 @@ Partial Class frmEdit
         ' lblAddress
         ' 
         lblAddress.AutoSize = True
-        lblAddress.Location = New Point(43, 315)
+        lblAddress.Location = New Point(34, 209)
         lblAddress.Margin = New Padding(2, 0, 2, 0)
         lblAddress.Name = "lblAddress"
         lblAddress.Size = New Size(73, 20)
@@ -161,7 +121,7 @@ Partial Class frmEdit
         ' lblNoTel
         ' 
         lblNoTel.AutoSize = True
-        lblNoTel.Location = New Point(43, 168)
+        lblNoTel.Location = New Point(34, 136)
         lblNoTel.Margin = New Padding(2, 0, 2, 0)
         lblNoTel.Name = "lblNoTel"
         lblNoTel.Size = New Size(66, 20)
@@ -171,7 +131,7 @@ Partial Class frmEdit
         ' lblName
         ' 
         lblName.AutoSize = True
-        lblName.Location = New Point(43, 91)
+        lblName.Location = New Point(34, 59)
         lblName.Margin = New Padding(2, 0, 2, 0)
         lblName.Name = "lblName"
         lblName.Size = New Size(60, 20)
@@ -191,51 +151,47 @@ Partial Class frmEdit
         ' 
         ' btnConfirm
         ' 
-        btnConfirm.Location = New Point(129, 502)
+        btnConfirm.Location = New Point(129, 374)
         btnConfirm.Margin = New Padding(2)
         btnConfirm.Name = "btnConfirm"
         btnConfirm.Size = New Size(90, 27)
-        btnConfirm.TabIndex = 27
+        btnConfirm.TabIndex = 23
         btnConfirm.Text = "&Confirm"
         btnConfirm.UseVisualStyleBackColor = True
         ' 
         ' btnCancel
         ' 
-        btnCancel.Location = New Point(282, 502)
+        btnCancel.Location = New Point(279, 374)
         btnCancel.Margin = New Padding(2)
         btnCancel.Name = "btnCancel"
         btnCancel.Size = New Size(90, 27)
-        btnCancel.TabIndex = 28
+        btnCancel.TabIndex = 24
         btnCancel.Text = "&Cancel"
         btnCancel.UseVisualStyleBackColor = True
         ' 
         ' txtAddress
         ' 
         txtAddress.CharacterCasing = CharacterCasing.Upper
-        txtAddress.Location = New Point(44, 338)
+        txtAddress.Location = New Point(35, 232)
         txtAddress.Multiline = True
         txtAddress.Name = "txtAddress"
         txtAddress.Size = New Size(226, 116)
-        txtAddress.TabIndex = 22
+        txtAddress.TabIndex = 19
         ' 
         ' frmEdit
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(499, 570)
+        ClientSize = New Size(499, 415)
         Controls.Add(txtAddress)
         Controls.Add(btnCancel)
         Controls.Add(btnConfirm)
         Controls.Add(lblEditForm)
         Controls.Add(radFemale)
         Controls.Add(radMale)
-        Controls.Add(txtPassword)
-        Controls.Add(txtUsrname)
         Controls.Add(txtEmail)
         Controls.Add(txtNoTel)
         Controls.Add(txtName)
-        Controls.Add(lblPass)
-        Controls.Add(lblusrname)
         Controls.Add(lblEmail)
         Controls.Add(lblGender)
         Controls.Add(lblAddress)
@@ -249,13 +205,9 @@ Partial Class frmEdit
     End Sub
     Friend WithEvents radFemale As RadioButton
     Friend WithEvents radMale As RadioButton
-    Friend WithEvents txtPassword As TextBox
-    Friend WithEvents txtUsrname As TextBox
     Friend WithEvents txtEmail As TextBox
     Friend WithEvents txtNoTel As TextBox
     Friend WithEvents txtName As TextBox
-    Friend WithEvents lblPass As Label
-    Friend WithEvents lblusrname As Label
     Friend WithEvents lblEmail As Label
     Friend WithEvents lblGender As Label
     Friend WithEvents lblAddress As Label

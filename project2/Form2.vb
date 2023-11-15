@@ -1,29 +1,27 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmRegister
+    Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
     Dim sql As String
     Sub ClearInput()
         txtName.Clear()
         txtNoTel.Clear()
         txtEmail.Clear()
         txtAddress.Clear()
-        txtUsrname.Clear()
-        txtPassword.Clear()
         radMale.Checked = False
         radFemale.Checked = False
     End Sub
 
     Sub FillDataGridView()
-        Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
         Dim Conn As New MySqlConnection(ConnString)
-        sql = "SELECT * FROM staff_detail"
+        sql = "SELECT * FROM staff_table"
         Dim dataTable As New DataTable()
         Dim adapter As New MySqlDataAdapter(sql, Conn)
         Try
 
             Conn.Open()
+            adapter.Fill(dataTable)
             DataGridView1.AutoGenerateColumns = False
             DataGridView1.DataSource = dataTable
-            adapter.Fill(dataTable)
 
             Dim rowNumber As Integer = 1
             For i As Integer = 0 To DataGridView1.Rows.Count - 1
@@ -38,7 +36,7 @@ Public Class frmRegister
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
+
         Dim Conn As New MySqlConnection(ConnString)
         Try
             Conn.Open()
@@ -48,19 +46,18 @@ Public Class frmRegister
             Dim passAddr As String = DataGridView1.CurrentRow.Cells("address").Value.ToString
             Dim passGender As String = DataGridView1.CurrentRow.Cells("gender").Value.ToString
             Dim passEmail As String = DataGridView1.CurrentRow.Cells("email").Value.ToString
-            Dim passUsrName As String = DataGridView1.CurrentRow.Cells("username").Value.ToString
-            Dim passUsrPass As String = DataGridView1.CurrentRow.Cells("password").Value.ToString
+
 
             If DataGridView1.Columns(e.ColumnIndex).Name = "edit" Then
-                Dim form3 As New frmEdit(passId, passName, passTel, passEmail, passAddr, passGender, passUsrName, passUsrPass)
-                form3.Show()
+                Dim editForm As New frmEdit(passId, passName, passTel, passEmail, passAddr, passGender)
+                editForm.Show()
                 'buka form3 atau frmEdit punya form
 
             ElseIf DataGridView1.Columns(e.ColumnIndex).Name = "delete" Then
                 Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this data?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
                 If result = DialogResult.Yes Then
-                    sql = "DELETE FROM staff_detail WHERE id = @passId" 'akan delete data ikut id
+                    sql = "DELETE FROM staff_table WHERE id = @passId" 'akan delete data ikut id
 
                     Dim sqlCmd As New MySqlCommand(sql, Conn)
                     sqlCmd.Parameters.AddWithValue("@passId", passId)
@@ -79,7 +76,6 @@ Public Class frmRegister
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
         Dim Conn As New MySqlConnection(ConnString)
         Try
             Conn.Open()
@@ -88,8 +84,6 @@ Public Class frmRegister
             Dim addEmail As String = txtEmail.Text
             Dim addAddress As String = txtAddress.Text
             Dim addGender As String
-            Dim addUsername As String = txtUsrname.Text
-            Dim addPassword As String = txtPassword.Text
 
             If radMale.Checked = True Then
                 addGender = "M"
@@ -97,7 +91,7 @@ Public Class frmRegister
                 addGender = "F"
             End If
 
-            sql = "INSERT INTO staff_detail (sname, numTel, address, gender, email, username, password) VALUES (@addName, @addNoTel, @addAddress, @addGender, @addEmail, @addUsername, @addPassword)"
+            sql = "INSERT INTO staff_table (sname, numTel, address, gender, email) VALUES (@addName, @addNoTel, @addAddress, @addGender, @addEmail)"
             Dim sqlCmd As New MySqlCommand(sql, Conn)
 
             sqlCmd.Parameters.AddWithValue("@addName", addName)
@@ -105,8 +99,6 @@ Public Class frmRegister
             sqlCmd.Parameters.AddWithValue("@addAddress", addAddress)
             sqlCmd.Parameters.AddWithValue("@addGender", addGender)
             sqlCmd.Parameters.AddWithValue("@addEmail", addEmail)
-            sqlCmd.Parameters.AddWithValue("@addUsername", addUsername)
-            sqlCmd.Parameters.AddWithValue("@addPassword", addPassword)
 
             sqlCmd.ExecuteNonQuery()
             MessageBox.Show("Data inserted successfully", "Insert Success", MessageBoxButtons.OK, MessageBoxIcon.Information)

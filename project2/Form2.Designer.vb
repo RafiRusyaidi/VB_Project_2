@@ -30,19 +30,13 @@ Partial Class frmRegister
         address = New DataGridViewTextBoxColumn()
         gender = New DataGridViewTextBoxColumn()
         email = New DataGridViewTextBoxColumn()
-        username = New DataGridViewTextBoxColumn()
-        password = New DataGridViewTextBoxColumn()
         edit = New DataGridViewButtonColumn()
         delete = New DataGridViewButtonColumn()
         radFemale = New RadioButton()
         radMale = New RadioButton()
-        txtPassword = New TextBox()
-        txtUsrname = New TextBox()
         txtEmail = New TextBox()
         txtNoTel = New TextBox()
         txtName = New TextBox()
-        lblPass = New Label()
-        lblusrname = New Label()
         lblEmail = New Label()
         lblGender = New Label()
         lblAddress = New Label()
@@ -62,15 +56,15 @@ Partial Class frmRegister
         ' 
         DataGridView1.AllowUserToAddRows = False
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {num, id, sname, numTel, address, gender, email, username, password, edit, delete})
-        DataGridView1.Location = New Point(30, 475)
+        DataGridView1.Columns.AddRange(New DataGridViewColumn() {num, id, sname, numTel, address, gender, email, edit, delete})
+        DataGridView1.Location = New Point(30, 401)
         DataGridView1.Margin = New Padding(2)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 62
         DataGridView1.RowTemplate.Height = 33
         DataGridView1.Size = New Size(654, 222)
-        DataGridView1.TabIndex = 17
+        DataGridView1.TabIndex = 15
         ' 
         ' num
         ' 
@@ -128,22 +122,6 @@ Partial Class frmRegister
         email.Name = "email"
         email.Width = 150
         ' 
-        ' username
-        ' 
-        username.DataPropertyName = "username"
-        username.HeaderText = "Username"
-        username.MinimumWidth = 8
-        username.Name = "username"
-        username.Width = 150
-        ' 
-        ' password
-        ' 
-        password.DataPropertyName = "password"
-        password.HeaderText = "Password"
-        password.MinimumWidth = 8
-        password.Name = "password"
-        password.Width = 150
-        ' 
         ' edit
         ' 
         edit.HeaderText = "Edit"
@@ -165,11 +143,11 @@ Partial Class frmRegister
         ' radFemale
         ' 
         radFemale.AutoSize = True
-        radFemale.Location = New Point(440, 119)
+        radFemale.Location = New Point(405, 101)
         radFemale.Margin = New Padding(2)
         radFemale.Name = "radFemale"
         radFemale.Size = New Size(78, 24)
-        radFemale.TabIndex = 11
+        radFemale.TabIndex = 10
         radFemale.TabStop = True
         radFemale.Text = "Female"
         radFemale.UseVisualStyleBackColor = True
@@ -177,43 +155,27 @@ Partial Class frmRegister
         ' radMale
         ' 
         radMale.AutoSize = True
-        radMale.Location = New Point(375, 119)
+        radMale.Location = New Point(340, 101)
         radMale.Margin = New Padding(2)
         radMale.Name = "radMale"
         radMale.Size = New Size(63, 24)
-        radMale.TabIndex = 10
+        radMale.TabIndex = 9
         radMale.TabStop = True
         radMale.Text = "Male"
         radMale.UseVisualStyleBackColor = True
         ' 
-        ' txtPassword
-        ' 
-        txtPassword.Location = New Point(375, 262)
-        txtPassword.Margin = New Padding(2)
-        txtPassword.Name = "txtPassword"
-        txtPassword.Size = New Size(121, 27)
-        txtPassword.TabIndex = 13
-        ' 
-        ' txtUsrname
-        ' 
-        txtUsrname.Location = New Point(375, 187)
-        txtUsrname.Margin = New Padding(2)
-        txtUsrname.Name = "txtUsrname"
-        txtUsrname.Size = New Size(121, 27)
-        txtUsrname.TabIndex = 12
-        ' 
         ' txtEmail
         ' 
         txtEmail.CharacterCasing = CharacterCasing.Lower
-        txtEmail.Location = New Point(90, 260)
+        txtEmail.Location = New Point(340, 167)
         txtEmail.Margin = New Padding(2)
         txtEmail.Name = "txtEmail"
-        txtEmail.Size = New Size(226, 27)
-        txtEmail.TabIndex = 8
+        txtEmail.Size = New Size(172, 27)
+        txtEmail.TabIndex = 11
         ' 
         ' txtNoTel
         ' 
-        txtNoTel.Location = New Point(90, 185)
+        txtNoTel.Location = New Point(73, 167)
         txtNoTel.Margin = New Padding(2)
         txtNoTel.Name = "txtNoTel"
         txtNoTel.Size = New Size(226, 27)
@@ -222,36 +184,16 @@ Partial Class frmRegister
         ' txtName
         ' 
         txtName.CharacterCasing = CharacterCasing.Upper
-        txtName.Location = New Point(90, 116)
+        txtName.Location = New Point(73, 98)
         txtName.Margin = New Padding(2)
         txtName.Name = "txtName"
         txtName.Size = New Size(226, 27)
         txtName.TabIndex = 6
         ' 
-        ' lblPass
-        ' 
-        lblPass.AutoSize = True
-        lblPass.Location = New Point(375, 238)
-        lblPass.Margin = New Padding(2, 0, 2, 0)
-        lblPass.Name = "lblPass"
-        lblPass.Size = New Size(81, 20)
-        lblPass.TabIndex = 47
-        lblPass.Text = "Password : "
-        ' 
-        ' lblusrname
-        ' 
-        lblusrname.AutoSize = True
-        lblusrname.Location = New Point(375, 165)
-        lblusrname.Margin = New Padding(2, 0, 2, 0)
-        lblusrname.Name = "lblusrname"
-        lblusrname.Size = New Size(86, 20)
-        lblusrname.TabIndex = 46
-        lblusrname.Text = "Username : "
-        ' 
         ' lblEmail
         ' 
         lblEmail.AutoSize = True
-        lblEmail.Location = New Point(89, 238)
+        lblEmail.Location = New Point(339, 145)
         lblEmail.Margin = New Padding(2, 0, 2, 0)
         lblEmail.Name = "lblEmail"
         lblEmail.Size = New Size(57, 20)
@@ -261,7 +203,7 @@ Partial Class frmRegister
         ' lblGender
         ' 
         lblGender.AutoSize = True
-        lblGender.Location = New Point(375, 94)
+        lblGender.Location = New Point(340, 76)
         lblGender.Margin = New Padding(2, 0, 2, 0)
         lblGender.Name = "lblGender"
         lblGender.Size = New Size(78, 20)
@@ -271,7 +213,7 @@ Partial Class frmRegister
         ' lblAddress
         ' 
         lblAddress.AutoSize = True
-        lblAddress.Location = New Point(89, 310)
+        lblAddress.Location = New Point(71, 208)
         lblAddress.Margin = New Padding(2, 0, 2, 0)
         lblAddress.Name = "lblAddress"
         lblAddress.Size = New Size(73, 20)
@@ -281,7 +223,7 @@ Partial Class frmRegister
         ' lblNoTel
         ' 
         lblNoTel.AutoSize = True
-        lblNoTel.Location = New Point(89, 163)
+        lblNoTel.Location = New Point(72, 145)
         lblNoTel.Margin = New Padding(2, 0, 2, 0)
         lblNoTel.Name = "lblNoTel"
         lblNoTel.Size = New Size(66, 20)
@@ -291,7 +233,7 @@ Partial Class frmRegister
         ' lblName
         ' 
         lblName.AutoSize = True
-        lblName.Location = New Point(89, 94)
+        lblName.Location = New Point(72, 76)
         lblName.Margin = New Padding(2, 0, 2, 0)
         lblName.Name = "lblName"
         lblName.Size = New Size(60, 20)
@@ -300,31 +242,31 @@ Partial Class frmRegister
         ' 
         ' btnAdd
         ' 
-        btnAdd.Location = New Point(564, 185)
+        btnAdd.Location = New Point(564, 167)
         btnAdd.Margin = New Padding(2)
         btnAdd.Name = "btnAdd"
         btnAdd.Size = New Size(120, 39)
-        btnAdd.TabIndex = 14
+        btnAdd.TabIndex = 12
         btnAdd.Text = "&ADD"
         btnAdd.UseVisualStyleBackColor = True
         ' 
         ' btnClear
         ' 
-        btnClear.Location = New Point(564, 260)
+        btnClear.Location = New Point(564, 242)
         btnClear.Margin = New Padding(2)
         btnClear.Name = "btnClear"
         btnClear.Size = New Size(120, 39)
-        btnClear.TabIndex = 15
+        btnClear.TabIndex = 13
         btnClear.Text = "&CLEAR"
         btnClear.UseVisualStyleBackColor = True
         ' 
         ' btnRefresh
         ' 
-        btnRefresh.Location = New Point(564, 436)
+        btnRefresh.Location = New Point(564, 362)
         btnRefresh.Margin = New Padding(2)
         btnRefresh.Name = "btnRefresh"
         btnRefresh.Size = New Size(120, 34)
-        btnRefresh.TabIndex = 16
+        btnRefresh.TabIndex = 14
         btnRefresh.Text = "&Refresh Table"
         btnRefresh.UseVisualStyleBackColor = True
         ' 
@@ -332,7 +274,7 @@ Partial Class frmRegister
         ' 
         lblPrompt1.AutoSize = True
         lblPrompt1.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point)
-        lblPrompt1.Location = New Point(28, 447)
+        lblPrompt1.Location = New Point(28, 373)
         lblPrompt1.Name = "lblPrompt1"
         lblPrompt1.Size = New Size(200, 23)
         lblPrompt1.TabIndex = 60
@@ -342,7 +284,7 @@ Partial Class frmRegister
         ' 
         lblRegisterForm.AutoSize = True
         lblRegisterForm.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        lblRegisterForm.Location = New Point(28, 24)
+        lblRegisterForm.Location = New Point(11, 24)
         lblRegisterForm.Margin = New Padding(2, 0, 2, 0)
         lblRegisterForm.Name = "lblRegisterForm"
         lblRegisterForm.Size = New Size(159, 28)
@@ -351,28 +293,28 @@ Partial Class frmRegister
         ' 
         ' btnLogout
         ' 
-        btnLogout.Location = New Point(564, 18)
+        btnLogout.Location = New Point(564, 24)
         btnLogout.Margin = New Padding(2)
         btnLogout.Name = "btnLogout"
         btnLogout.Size = New Size(120, 34)
-        btnLogout.TabIndex = 18
+        btnLogout.TabIndex = 16
         btnLogout.Text = "&Logout"
         btnLogout.UseVisualStyleBackColor = True
         ' 
         ' txtAddress
         ' 
         txtAddress.CharacterCasing = CharacterCasing.Upper
-        txtAddress.Location = New Point(90, 333)
+        txtAddress.Location = New Point(72, 231)
         txtAddress.Multiline = True
         txtAddress.Name = "txtAddress"
-        txtAddress.Size = New Size(226, 84)
-        txtAddress.TabIndex = 9
+        txtAddress.Size = New Size(227, 83)
+        txtAddress.TabIndex = 8
         ' 
         ' frmRegister
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(715, 724)
+        ClientSize = New Size(715, 634)
         Controls.Add(txtAddress)
         Controls.Add(btnLogout)
         Controls.Add(lblRegisterForm)
@@ -382,13 +324,9 @@ Partial Class frmRegister
         Controls.Add(btnAdd)
         Controls.Add(radFemale)
         Controls.Add(radMale)
-        Controls.Add(txtPassword)
-        Controls.Add(txtUsrname)
         Controls.Add(txtEmail)
         Controls.Add(txtNoTel)
         Controls.Add(txtName)
-        Controls.Add(lblPass)
-        Controls.Add(lblusrname)
         Controls.Add(lblEmail)
         Controls.Add(lblGender)
         Controls.Add(lblAddress)
@@ -405,13 +343,9 @@ Partial Class frmRegister
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents radFemale As RadioButton
     Friend WithEvents radMale As RadioButton
-    Friend WithEvents txtPassword As TextBox
-    Friend WithEvents txtUsrname As TextBox
     Friend WithEvents txtEmail As TextBox
     Friend WithEvents txtNoTel As TextBox
     Friend WithEvents txtName As TextBox
-    Friend WithEvents lblPass As Label
-    Friend WithEvents lblusrname As Label
     Friend WithEvents lblEmail As Label
     Friend WithEvents lblGender As Label
     Friend WithEvents lblAddress As Label
@@ -431,8 +365,6 @@ Partial Class frmRegister
     Friend WithEvents address As DataGridViewTextBoxColumn
     Friend WithEvents gender As DataGridViewTextBoxColumn
     Friend WithEvents email As DataGridViewTextBoxColumn
-    Friend WithEvents username As DataGridViewTextBoxColumn
-    Friend WithEvents password As DataGridViewTextBoxColumn
     Friend WithEvents edit As DataGridViewButtonColumn
     Friend WithEvents delete As DataGridViewButtonColumn
 End Class
