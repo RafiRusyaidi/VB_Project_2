@@ -22,6 +22,7 @@ Partial Class frmLogin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmLogin))
         btnCheckConn = New Button()
         btnClear = New Button()
         btnLogin = New Button()
@@ -29,74 +30,110 @@ Partial Class frmLogin
         lblPassword = New Label()
         txtUsername = New TextBox()
         txtPassword = New TextBox()
+        lblLogin = New Label()
+        PictureBox1 = New PictureBox()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnCheckConn
         ' 
-        btnCheckConn.Location = New Point(406, 360)
+        btnCheckConn.Location = New Point(436, 215)
+        btnCheckConn.Margin = New Padding(2)
         btnCheckConn.Name = "btnCheckConn"
-        btnCheckConn.Size = New Size(112, 34)
-        btnCheckConn.TabIndex = 0
-        btnCheckConn.Text = "Check Conn"
+        btnCheckConn.Size = New Size(94, 40)
+        btnCheckConn.TabIndex = 5
+        btnCheckConn.Text = "C&heck Conn"
         btnCheckConn.UseVisualStyleBackColor = True
         ' 
         ' btnClear
         ' 
-        btnClear.Location = New Point(250, 360)
+        btnClear.Location = New Point(329, 215)
+        btnClear.Margin = New Padding(2)
         btnClear.Name = "btnClear"
-        btnClear.Size = New Size(112, 34)
-        btnClear.TabIndex = 1
-        btnClear.Text = "Clear"
+        btnClear.Size = New Size(94, 40)
+        btnClear.TabIndex = 4
+        btnClear.Text = "&Clear"
         btnClear.UseVisualStyleBackColor = True
         ' 
         ' btnLogin
         ' 
-        btnLogin.Location = New Point(85, 360)
+        btnLogin.Location = New Point(222, 215)
+        btnLogin.Margin = New Padding(2)
         btnLogin.Name = "btnLogin"
-        btnLogin.Size = New Size(112, 34)
-        btnLogin.TabIndex = 2
-        btnLogin.Text = "Login"
+        btnLogin.Size = New Size(94, 40)
+        btnLogin.TabIndex = 3
+        btnLogin.Text = "&Login"
         btnLogin.UseVisualStyleBackColor = True
         ' 
         ' lblUsername
         ' 
         lblUsername.AutoSize = True
-        lblUsername.Location = New Point(241, 51)
+        lblUsername.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        lblUsername.Location = New Point(257, 72)
+        lblUsername.Margin = New Padding(2, 0, 2, 0)
         lblUsername.Name = "lblUsername"
-        lblUsername.Size = New Size(105, 25)
+        lblUsername.Size = New Size(121, 28)
         lblUsername.TabIndex = 3
         lblUsername.Text = "Username : "
         ' 
         ' lblPassword
         ' 
         lblPassword.AutoSize = True
-        lblPassword.Location = New Point(241, 192)
+        lblPassword.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        lblPassword.Location = New Point(257, 151)
+        lblPassword.Margin = New Padding(2, 0, 2, 0)
         lblPassword.Name = "lblPassword"
-        lblPassword.Size = New Size(101, 25)
+        lblPassword.Size = New Size(114, 28)
         lblPassword.TabIndex = 4
         lblPassword.Text = "Password : "
         ' 
         ' txtUsername
         ' 
-        txtUsername.Location = New Point(202, 109)
+        txtUsername.Font = New Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point)
+        txtUsername.Location = New Point(382, 72)
+        txtUsername.Margin = New Padding(2)
         txtUsername.Name = "txtUsername"
-        txtUsername.PlaceholderText = "enter username here"
-        txtUsername.Size = New Size(187, 31)
-        txtUsername.TabIndex = 5
+        txtUsername.PlaceholderText = " enter username here"
+        txtUsername.Size = New Size(183, 31)
+        txtUsername.TabIndex = 1
         ' 
         ' txtPassword
         ' 
-        txtPassword.Location = New Point(202, 247)
+        txtPassword.Font = New Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point)
+        txtPassword.Location = New Point(382, 151)
+        txtPassword.Margin = New Padding(2)
         txtPassword.Name = "txtPassword"
-        txtPassword.PlaceholderText = "enter password here"
-        txtPassword.Size = New Size(187, 31)
-        txtPassword.TabIndex = 6
+        txtPassword.PasswordChar = "*"c
+        txtPassword.PlaceholderText = " enter password here"
+        txtPassword.Size = New Size(183, 31)
+        txtPassword.TabIndex = 2
+        ' 
+        ' lblLogin
+        ' 
+        lblLogin.AutoSize = True
+        lblLogin.Font = New Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point)
+        lblLogin.Location = New Point(216, 19)
+        lblLogin.Margin = New Padding(2, 0, 2, 0)
+        lblLogin.Name = "lblLogin"
+        lblLogin.Size = New Size(83, 31)
+        lblLogin.TabIndex = 41
+        lblLogin.Text = "LOGIN"
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
+        PictureBox1.Location = New Point(-24, -16)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(278, 271)
+        PictureBox1.TabIndex = 42
+        PictureBox1.TabStop = False
         ' 
         ' frmLogin
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(590, 450)
+        ClientSize = New Size(607, 286)
+        Controls.Add(lblLogin)
         Controls.Add(txtPassword)
         Controls.Add(txtUsername)
         Controls.Add(lblPassword)
@@ -104,8 +141,11 @@ Partial Class frmLogin
         Controls.Add(btnLogin)
         Controls.Add(btnClear)
         Controls.Add(btnCheckConn)
+        Controls.Add(PictureBox1)
+        Margin = New Padding(2)
         Name = "frmLogin"
         Text = "Login"
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -117,4 +157,6 @@ Partial Class frmLogin
     Friend WithEvents lblPassword As Label
     Friend WithEvents txtUsername As TextBox
     Friend WithEvents txtPassword As TextBox
+    Friend WithEvents lblLogin As Label
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

@@ -7,10 +7,15 @@ Public Class frmLogin
             Conn.Open()
             MsgBox("Success")
         Catch ex As Exception
-            MsgBox(ex.Message)
-
+            MessageBox.Show(ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Sub ClearInput()
+        txtUsername.Clear()
+        txtPassword.Clear()
+    End Sub
+
     Sub MysqlLogin()
         Dim ConnString As String = "server=localhost; user=root;port=3306;database=vb_project_2"
         Dim Conn As New MySqlConnection(ConnString)
@@ -28,16 +33,18 @@ Public Class frmLogin
 
             Using sqlRead
                 If sqlRead.HasRows Then
-                    MessageBox.Show("Login Successfull")
+                    MessageBox.Show("Login Successfull", "Login Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    ClearInput()
                     frmRegister.Show()
                     Me.Hide()
                 Else
-                    MessageBox.Show("Login Failed")
+                    MessageBox.Show("Login Failed", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    ClearInput()
                 End If
             End Using
 
-        Catch ex As MySqlException
-            MsgBox(ex.Message)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             Conn.Close()
         End Try
@@ -53,7 +60,6 @@ Public Class frmLogin
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        txtUsername.Clear()
-        txtPassword.Clear()
+        ClearInput()
     End Sub
 End Class

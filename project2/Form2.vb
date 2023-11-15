@@ -1,6 +1,17 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmRegister
     Dim sql As String
+    Sub ClearInput()
+        txtName.Clear()
+        txtNoTel.Clear()
+        txtEmail.Clear()
+        txtAddress.Clear()
+        txtUsrname.Clear()
+        txtPassword.Clear()
+        radMale.Checked = False
+        radFemale.Checked = False
+    End Sub
+
     Sub FillDataGridView()
         Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
         Dim Conn As New MySqlConnection(ConnString)
@@ -11,27 +22,19 @@ Public Class frmRegister
 
             Conn.Open()
             DataGridView1.AutoGenerateColumns = False
-            adapter.Fill(dataTable)
             DataGridView1.DataSource = dataTable
+            adapter.Fill(dataTable)
 
-            DataGridView1.Columns("id").DataPropertyName = "id"
-            DataGridView1.Columns("sname").DataPropertyName = "sname"
-            DataGridView1.Columns("numTel").DataPropertyName = "numTel"
-            DataGridView1.Columns("address").DataPropertyName = "address"
-            DataGridView1.Columns("gender").DataPropertyName = "gender"
-            DataGridView1.Columns("email").DataPropertyName = "email"
-            DataGridView1.Columns("username").DataPropertyName = "username"
-            DataGridView1.Columns("password").DataPropertyName = "password"
+            Dim rowNumber As Integer = 1
+            For i As Integer = 0 To DataGridView1.Rows.Count - 1
+                DataGridView1.Rows(i).Cells("num").Value = (i + 1).ToString()
+            Next
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            MessageBox.Show(ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             Conn.Close()
-            Conn.Dispose()
         End Try
-    End Sub
-    Private Sub frmRegister_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        FillDataGridView()
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
@@ -49,30 +52,29 @@ Public Class frmRegister
             Dim passUsrPass As String = DataGridView1.CurrentRow.Cells("password").Value.ToString
 
             If DataGridView1.Columns(e.ColumnIndex).Name = "edit" Then
-                Dim form3 As New Form3(passId, passName, passTel, passEmail, passAddr, passGender, passUsrName, passUsrPass)
+                Dim form3 As New frmEdit(passId, passName, passTel, passEmail, passAddr, passGender, passUsrName, passUsrPass)
                 form3.Show()
+                'buka form3 atau frmEdit punya form
 
             ElseIf DataGridView1.Columns(e.ColumnIndex).Name = "delete" Then
                 Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this data?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
                 If result = DialogResult.Yes Then
-                    sql = "DELETE FROM staff_detail WHERE id = @passId"
+                    sql = "DELETE FROM staff_detail WHERE id = @passId" 'akan delete data ikut id
 
                     Dim sqlCmd As New MySqlCommand(sql, Conn)
                     sqlCmd.Parameters.AddWithValue("@passId", passId)
 
                     sqlCmd.ExecuteNonQuery()
                     MessageBox.Show("Data deleted successfully.", "Delete Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Else
-                    MessageBox.Show("Data deletion canceled.", "Delete Canceled", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    FillDataGridView()
                 End If
 
             End If
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MessageBox.Show(ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             Conn.Close()
-            Conn.Dispose()
         End Try
     End Sub
 
@@ -84,7 +86,7 @@ Public Class frmRegister
             Dim addName As String = txtName.Text
             Dim addNoTel As Integer = Int(txtNoTel.Text)
             Dim addEmail As String = txtEmail.Text
-            Dim addAddress As String = rtbAddress.Text
+            Dim addAddress As String = txtAddress.Text
             Dim addGender As String
             Dim addUsername As String = txtUsrname.Text
             Dim addPassword As String = txtPassword.Text
@@ -107,15 +109,18 @@ Public Class frmRegister
             sqlCmd.Parameters.AddWithValue("@addPassword", addPassword)
 
             sqlCmd.ExecuteNonQuery()
-
-            MsgBox("Data inserted successfully.")
+            MessageBox.Show("Data inserted successfully", "Insert Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ClearInput()
             FillDataGridView()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MessageBox.Show(ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             Conn.Close()
-            Conn.Dispose()
         End Try
+    End Sub
+
+    Private Sub frmRegister_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        FillDataGridView()
     End Sub
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
@@ -123,13 +128,11 @@ Public Class frmRegister
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        txtName.Clear()
-        txtNoTel.Clear()
-        txtEmail.Clear()
-        rtbAddress.Clear()
-        txtUsrname.Clear()
-        txtPassword.Clear()
-        radMale.Checked = False
-        radFemale.Checked = False
+        ClearInput()
+    End Sub
+
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        Me.Close()
+        frmLogin.Show()
     End Sub
 End Class

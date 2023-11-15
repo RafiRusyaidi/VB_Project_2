@@ -51,4 +51,5 @@ C:\Users\HP\Desktop\VB_Project_2\project2\bin\Debug\net6.0-windows\runtimes\win-
 C:\Users\HP\Desktop\VB_Project_2\project2\bin\Debug\net6.0-windows\runtimes\win-x64\native\krbcc64.dll
 C:\Users\HP\Desktop\VB_Project_2\project2\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\HP\Desktop\VB_Project_2\project2\obj\Debug\net6.0-windows\project2.vbproj.CopyComplete
-C:\Users\HP\Desktop\VB_Project_2\project2\obj\Debug\net6.0-windows\project2.Form3.resources
+C:\Users\HP\Desktop\VB_Project_2\project2\obj\Debug\net6.0-windows\project2.frmEdit.resources
+C:\Users\HP\Desktop\VB_Project_2\project2\obj\Debug\net6.0-windows\project2.Resources.resources
