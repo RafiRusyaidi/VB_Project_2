@@ -20,7 +20,7 @@ Public Class frmLogin
             Conn.Open()
             Dim chckUsername = txtUsername.Text
             Dim chckPassword = txtPassword.Text
-            Dim sql As String = "SELECT * FROM admin_table WHERE dept_username = @chckUsername AND dept_password = @chckPassword"
+            Dim sql As String = "SELECT * FROM admin_table WHERE username = @chckUsername AND password = @chckPassword"
             Dim sqlCmd As New MySqlCommand(sql, Conn)
             sqlCmd.Parameters.AddWithValue("@chckUsername", chckUsername)
             sqlCmd.Parameters.AddWithValue("@chckPassword", chckPassword)
@@ -47,16 +47,14 @@ Public Class frmLogin
         End Try
 
     End Sub
-
     Private Sub btnCheckConn_Click(sender As Object, e As EventArgs) Handles btnCheckConn.Click
         MysqlConnCheck()
     End Sub
-
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         MysqlLogin()
     End Sub
-
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         ClearInput()
     End Sub
+
 End Class

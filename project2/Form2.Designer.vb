@@ -60,6 +60,7 @@ Partial Class frmRegister
         DataGridView1.Location = New Point(30, 401)
         DataGridView1.Margin = New Padding(2)
         DataGridView1.Name = "DataGridView1"
+        DataGridView1.ReadOnly = True
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 62
         DataGridView1.RowTemplate.Height = 33
@@ -71,6 +72,7 @@ Partial Class frmRegister
         num.HeaderText = "No"
         num.MinimumWidth = 8
         num.Name = "num"
+        num.ReadOnly = True
         num.Width = 40
         ' 
         ' id
@@ -79,6 +81,7 @@ Partial Class frmRegister
         id.HeaderText = "ID"
         id.MinimumWidth = 6
         id.Name = "id"
+        id.ReadOnly = True
         id.Visible = False
         id.Width = 10
         ' 
@@ -88,6 +91,7 @@ Partial Class frmRegister
         sname.HeaderText = "Name"
         sname.MinimumWidth = 8
         sname.Name = "sname"
+        sname.ReadOnly = True
         sname.Width = 150
         ' 
         ' numTel
@@ -96,6 +100,7 @@ Partial Class frmRegister
         numTel.HeaderText = "Phone Number"
         numTel.MinimumWidth = 8
         numTel.Name = "numTel"
+        numTel.ReadOnly = True
         numTel.Width = 150
         ' 
         ' address
@@ -104,6 +109,7 @@ Partial Class frmRegister
         address.HeaderText = "Address"
         address.MinimumWidth = 8
         address.Name = "address"
+        address.ReadOnly = True
         address.Width = 150
         ' 
         ' gender
@@ -112,6 +118,7 @@ Partial Class frmRegister
         gender.HeaderText = "Gender"
         gender.MinimumWidth = 8
         gender.Name = "gender"
+        gender.ReadOnly = True
         gender.Width = 70
         ' 
         ' email
@@ -120,6 +127,7 @@ Partial Class frmRegister
         email.HeaderText = "Email"
         email.MinimumWidth = 8
         email.Name = "email"
+        email.ReadOnly = True
         email.Width = 150
         ' 
         ' edit
@@ -127,6 +135,7 @@ Partial Class frmRegister
         edit.HeaderText = "Edit"
         edit.MinimumWidth = 8
         edit.Name = "edit"
+        edit.ReadOnly = True
         edit.Text = "edit"
         edit.UseColumnTextForButtonValue = True
         edit.Width = 70
@@ -136,6 +145,7 @@ Partial Class frmRegister
         delete.HeaderText = "Delete"
         delete.MinimumWidth = 8
         delete.Name = "delete"
+        delete.ReadOnly = True
         delete.Text = "delete"
         delete.UseColumnTextForButtonValue = True
         delete.Width = 70

@@ -10,7 +10,6 @@ Public Class frmRegister
         radMale.Checked = False
         radFemale.Checked = False
     End Sub
-
     Sub FillDataGridView()
         Dim Conn As New MySqlConnection(ConnString)
         sql = "SELECT * FROM staff_table"
@@ -34,7 +33,6 @@ Public Class frmRegister
             Conn.Close()
         End Try
     End Sub
-
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
         Dim Conn As New MySqlConnection(ConnString)
@@ -74,7 +72,6 @@ Public Class frmRegister
             Conn.Close()
         End Try
     End Sub
-
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Dim Conn As New MySqlConnection(ConnString)
         Try
@@ -110,21 +107,18 @@ Public Class frmRegister
             Conn.Close()
         End Try
     End Sub
-
     Private Sub frmRegister_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         FillDataGridView()
     End Sub
-
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         FillDataGridView()
     End Sub
-
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         ClearInput()
     End Sub
-
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
         Me.Close()
         frmLogin.Show()
     End Sub
+
 End Class
