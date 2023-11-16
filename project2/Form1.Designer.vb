@@ -31,8 +31,8 @@ Partial Class frmLogin
         txtUsername = New TextBox()
         txtPassword = New TextBox()
         lblLogin = New Label()
-        PictureBox1 = New PictureBox()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        picIcon = New PictureBox()
+        CType(picIcon, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnCheckConn
@@ -119,14 +119,14 @@ Partial Class frmLogin
         lblLogin.TabIndex = 41
         lblLogin.Text = "LOGIN"
         ' 
-        ' PictureBox1
+        ' picIcon
         ' 
-        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(-24, -16)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(278, 271)
-        PictureBox1.TabIndex = 42
-        PictureBox1.TabStop = False
+        picIcon.Image = CType(resources.GetObject("picIcon.Image"), Image)
+        picIcon.Location = New Point(-24, -16)
+        picIcon.Name = "picIcon"
+        picIcon.Size = New Size(278, 271)
+        picIcon.TabIndex = 42
+        picIcon.TabStop = False
         ' 
         ' frmLogin
         ' 
@@ -141,11 +141,11 @@ Partial Class frmLogin
         Controls.Add(btnLogin)
         Controls.Add(btnClear)
         Controls.Add(btnCheckConn)
-        Controls.Add(PictureBox1)
+        Controls.Add(picIcon)
         Margin = New Padding(2)
         Name = "frmLogin"
         Text = "Login"
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(picIcon, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -158,5 +158,5 @@ Partial Class frmLogin
     Friend WithEvents txtUsername As TextBox
     Friend WithEvents txtPassword As TextBox
     Friend WithEvents lblLogin As Label
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents picIcon As PictureBox
 End Class

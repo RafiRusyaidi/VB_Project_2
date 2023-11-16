@@ -4,7 +4,7 @@ Public Class frmEdit
     Dim ConnString As String = "server=localhost; user=root; port=3306; database=vb_project_2"
     Dim sql As String
     Dim getId As String
-    Sub New(val1 As String, val2 As String, val3 As String, val4 As String, val5 As String, val6 As String)
+    Sub New(val1 As String, val2 As String, val3 As String, val4 As String, val5 As String, val6 As String) 'constructor terima nilai dari form2 / frmRegister
         InitializeComponent()
         getId = val1
         txtName.Text = val2
@@ -23,19 +23,18 @@ Public Class frmEdit
         Dim Conn As New MySqlConnection(ConnString)
         Dim resultReply As DialogResult = MessageBox.Show("Are you sure want to edit the data?", "Edit Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        Dim id = getId
-        Dim updName As String = txtName.Text
-        Dim updNumTel As String = txtNoTel.Text
-        Dim updEmail As String = txtEmail.Text
-        Dim updAddress As String = txtAddress.Text
-        Dim updGender As String
-        If radMale.Checked Then
-            updGender = "M"
-        Else
-            updGender = "F"
-        End If
-
         Try
+            Dim id = getId
+            Dim updName As String = txtName.Text
+            Dim updNumTel As String = txtNoTel.Text
+            Dim updEmail As String = txtEmail.Text
+            Dim updAddress As String = txtAddress.Text
+            Dim updGender As String
+            If radMale.Checked Then
+                updGender = "M"
+            Else
+                updGender = "F"
+            End If
             If resultReply = DialogResult.Yes Then
                 Conn.Open()
                 sql = "UPDATE staff_table SET sname = @updName, numTel = @updNumTel, address = @updAddress, gender = @updGender, email = @updEmail WHERE id = @id"

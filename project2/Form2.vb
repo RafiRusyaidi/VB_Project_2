@@ -44,9 +44,8 @@ Public Class frmRegister
             Dim passGender As String = DataGridView1.CurrentRow.Cells("gender").Value.ToString
             Dim passEmail As String = DataGridView1.CurrentRow.Cells("email").Value.ToString
 
-
             If DataGridView1.Columns(e.ColumnIndex).Name = "edit" Then
-                Dim editForm As New frmEdit(passId, passName, passTel, passEmail, passAddr, passGender)
+                Dim editForm As New frmEdit(passId, passName, passTel, passEmail, passAddr, passGender) 'hantar nilai kpd form3 / frmEdit
                 editForm.Show()
                 'buka form3 atau frmEdit punya form
 
@@ -55,15 +54,13 @@ Public Class frmRegister
 
                 If result = DialogResult.Yes Then
                     sql = "DELETE FROM staff_table WHERE id = @passId" 'akan delete data ikut id
-
                     Dim sqlCmd As New MySqlCommand(sql, Conn)
                     sqlCmd.Parameters.AddWithValue("@passId", passId)
-
                     sqlCmd.ExecuteNonQuery()
+
                     MessageBox.Show("Data deleted successfully.", "Delete Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     FillDataGridView()
                 End If
-
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -76,7 +73,7 @@ Public Class frmRegister
         Try
             Conn.Open()
             Dim addName As String = txtName.Text
-            Dim addNoTel As Integer = Int(txtNoTel.Text)
+            Dim addNoTel As String = txtNoTel.Text
             Dim addEmail As String = txtEmail.Text
             Dim addAddress As String = txtAddress.Text
             Dim addGender As String
