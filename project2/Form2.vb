@@ -22,7 +22,7 @@ Public Class frmRegister
             DataGridView1.AutoGenerateColumns = False
             DataGridView1.DataSource = dataTable
 
-            Dim rowNumber As Integer = 1
+
             For i As Integer = 0 To DataGridView1.Rows.Count - 1
                 DataGridView1.Rows(i).Cells("num").Value = (i + 1).ToString()
             Next
