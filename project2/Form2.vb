@@ -22,8 +22,7 @@ Public Class frmRegister
             DataGridView1.AutoGenerateColumns = False
             DataGridView1.DataSource = dataTable
 
-
-            For i As Integer = 0 To DataGridView1.Rows.Count - 1
+            For i As Integer = 0 To DataGridView1.Rows.Count - 1 'rowscount tolak dgn 1 sbb dia start dari 0 dan tamat pada rowscount yg ke n-1, klau lebih akn jadi outrange index
                 DataGridView1.Rows(i).Cells("num").Value = (i + 1).ToString()
             Next
 
